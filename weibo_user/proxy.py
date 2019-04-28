@@ -27,8 +27,8 @@ def get_header():
     ]
     return {'User-Agent': random.choice(USER_AGENTS)}
 
-
-def get_xici(): # xici 代理
+'''
+def get_xici(): # xici 代理， 质量太差，不用了
     proxies = []
     url = 'https://www.xicidaili.com/nn/'
     try:
@@ -46,7 +46,7 @@ def get_xici(): # xici 代理
     except Exception as e:
         print(e)
     return proxies
-
+'''
 
 def get_ip336():
     base_url = 'http://www.ip3366.net/free/?stype=1&page='
@@ -65,7 +65,7 @@ def get_ip336():
     return proxies
 
 
-def clear_proxies(raw_proxies):
+def clear_proxies(raw_proxies): # 对获取到的代理进行清洗，即尝试访问
     cur_proxy = {}
     for proxy in raw_proxies:
         print("trying {}".format(proxy,))
@@ -81,12 +81,12 @@ def clear_proxies(raw_proxies):
             pass
 
 
-def write(proxy):
+def write(proxy): # 写入可用代理
     with open("proxies.txt", "a+",) as f:
         f.write(proxy + "\n")
 
 
-def clear_old():
+def clear_old(): # 每次运行爬虫程序前运行，清洗之前的代理
     lines = []
     new_lines = []
     with open("proxies.txt", "r") as f:
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     xici_raw =get_xici()
     proxies =clear_proxies(xici_raw)
 '''
-    clear_old()
-    #ip336_raw = get_ip336()  # 悄悄注释掉
-    #clear_proxies(ip336_raw) # 悄悄注释掉
+    clear_old() #清洗
+    ip336_raw = get_ip336()  
+    clear_proxies(ip336_raw)
 
