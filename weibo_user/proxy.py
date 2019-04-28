@@ -104,11 +104,11 @@ def clear_old():
             f.write(new_line)
 
 if __name__ == '__main__':
-    '''
+    ''' xici 代理质量实在太差了，省了这个吧
     xici_raw =get_xici()
     proxies =clear_proxies(xici_raw)
 '''
     clear_old()
-    # ip336_raw = get_ip336()
-    # clear_proxies(ip336_raw)
+    #ip336_raw = get_ip336()  # 悄悄注释掉
+    #clear_proxies(ip336_raw) # 悄悄注释掉
 
