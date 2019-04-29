@@ -21,18 +21,13 @@ class WeiboUserPipeline(object):
 
         sql = "insert into wb_blogs (likes, comments, idstr, islong, raw_text,reposts_count, " \
                      "retweeted, retweeted_id, edited, created_at) values (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s)"
-        print(self.cursor.mogrify(sql,args=(item['likes'], item['comments'], item['idstr'], item['islong'], item['raw_text'].strip(),
-                                            item['reposts_count'], item['retweeted'], item['retweeted_id'],item['edited'],
-                                            str(item['created_at']))))
+       
         ret = self.cursor.execute(
             query=sql,
             args=(item['likes'], item['comments'], item['idstr'], item['islong'], item['raw_text'].strip(),
-                                            item['reposts_count'], item['retweeted'], item['retweeted_id'],item['edited'],
-                                            str(item['created_at'])))
+                  item['reposts_count'], item['retweeted'], item['retweeted_id'],item['edited'],item['created_at']))
         if ret == 1:
             self.conn.commit()
-
-
         return item
 
     def close_spider(self, spider):
