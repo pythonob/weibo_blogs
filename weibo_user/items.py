@@ -11,7 +11,7 @@ import scrapy
 class WeiboUserItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    likes = scrapy.Field()
+    likes = scrapy.Field()  # 点赞数
     comments = scrapy.Field()
     idstr = scrapy.Field()
     islong = scrapy.Field()
