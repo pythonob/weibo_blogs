@@ -80,6 +80,7 @@ class WeiboUserDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        '''
         proxies = []
         with open("proxies.txt",'r') as f:
             proxies = f.readlines()
@@ -87,6 +88,7 @@ class WeiboUserDownloaderMiddleware(object):
         request.meta['proxy'] = proxy
         header = random.choice(USER_AGENTS)
         request.headers.setdefault('User-Agent',header)
+        '''
         return None
 
     def process_response(self, request, response, spider):
